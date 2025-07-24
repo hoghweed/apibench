@@ -12,6 +12,7 @@
     "bootstrap": "pnpm install",
     "build": "run-s clean:outputs build:outputs",
     "build:outputs": "tsc -p ./tsconfig.json",
+    "commit": "git-cz",
     "clean": "rm -rf .turbo node_modules",
     "clean:outputs": "rimraf ./dist",
     "dev": "run-p dev:start typecheck",

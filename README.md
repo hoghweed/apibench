@@ -5,15 +5,26 @@ A simple, modern API project using Fastify, MongoDB, TypeScript, and robust stru
 ---
 
 ## Table of Contents
-1. [Project Overview](#project-overview)
-2. [Architecture](#architecture)
-3. [Key Features and Capabilities](#key-features-and-capabilities)
-4. [Project Structure](#project-structure)
-5. [Environment Variables](#environment-variables)
-6. [Fastify Plugins](#fastify-plugins)
-7. [API Routes](#api-routes)
-8. [Development Infrastructure](#development-infrastructure)
-9. [Scripts and Commands](#scripts-and-commands)
+- [apibench](#apibench)
+  - [Table of Contents](#table-of-contents)
+  - [Project Overview](#project-overview)
+  - [Architecture](#architecture)
+  - [Key Features and Capabilities](#key-features-and-capabilities)
+  - [Project Structure](#project-structure)
+  - [Environment Variables](#environment-variables)
+  - [Fastify Plugins](#fastify-plugins)
+  - [API Routes](#api-routes)
+    - [**POST /api/users**](#post-apiusers)
+    - [**GET /api/users?created=asc|desc**](#get-apiuserscreatedascdesc)
+    - [**OpenAPI Docs**](#openapi-docs)
+    - [**Health Endpoints**](#health-endpoints)
+  - [Development Infrastructure](#development-infrastructure)
+  - [Scripts and Commands](#scripts-and-commands)
+  - [Getting Started](#getting-started)
+  - [Testing Your API with `/reference`](#testing-your-api-with-reference)
+  - [Screenshots](#screenshots)
+  - [License](#license)
+  - [Contributors](#contributors)
 
 ---
 
@@ -124,14 +135,14 @@ All API endpoints are prefixed with `/api`.
 - **Success:** `201 Created` with user (no password field, includes string id)
 - **Error:** `409 Conflict` (duplicate username), `400` for validation errors
 
-### **GET /api/users?created=ASC|DESC**
+### **GET /api/users?created=asc|desc**
 - **Purpose:** List all users, sorted by creation time.
 - **Query:**  
-  - `created: 'ASC' | 'DESC'` (sort direction, required)
+  - `created: 'asc' | 'desc'` (sort direction, required)
 - **Response:**  
   - Array of users, each omitting password.
   - Ordered by time as specified.
-- **Error:**  
+- **Error:**
   - `400` for query or server issues.
 
 ### **OpenAPI Docs**
@@ -178,22 +189,54 @@ Key npm/pnpm scripts (`package.json`):
 
 1. **Install dependencies:**  
    ```sh
-   pnpm install
+   pnpm boostrap
    ```
 2. **Setup environment:**  
    Edit `.env` as needed.
-3. **Start infrastructure:**  
+3. **Start app in development:**  
    ```sh
-   pnpm run:infra
+   pnpm start
    ```
-4. **Start app in development:**  
-   ```sh
-   pnpm dev
-   ```
-5. **Explore API and docs:**  
+   this will start automatically the infrastructure as well
+
+4. **Explore API and docs:**  
    - API: [http://localhost:4111/api/users](http://localhost:4111/api/users)
    - Docs: [http://localhost:4111/reference](http://localhost:4111/reference)
    - MongoDB GUI: [http://localhost:8082](http://localhost:8082) (`admin`/`password`)
+
+---
+
+## Testing Your API with `/reference`
+
+The application automatically generates and serves full OpenAPI (Swagger) documentation at the `/reference` endpoint. This interactive documentation allows you to:
+
+- Explore all available API routes and their schemas.
+- Try API calls directly from your browser using the "Try it out" feature.
+- View request/response formats, possible status codes, and sample payloads.
+
+**To use:**
+1. Start the server as described above.
+2. Open [http://localhost:4111/reference](http://localhost:4111/reference) in your browser.
+3. Expand endpoints, fill in example data, and test your API live.
+
+This is a fast way to verify the API works as expected and to share API exploration with your team.
+
+---
+
+## Screenshots
+
+> _Add your screenshots here!_
+>
+> **API Reference Example:**  
+> ![API Reference UI](screenshots/api-reference.png)
+>
+> **MongoDB GUI Example:**  
+> ![MongoDB GUI](screenshots/mongo-gui.png)
+>
+> **User Creation Request/Response:**  
+> ![User Creation](screenshots/create-user.png)
+>
+> _To add your own screenshots, simply save images in the `screenshots/` directory and update these markdown paths._
 
 ---
 
