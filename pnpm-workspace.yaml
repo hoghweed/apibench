@@ -1,0 +1,11 @@
+engineStrict: true
+
+onlyBuiltDependencies:
+  - '@biomejs/biome'
+  - bcrypt
+  - esbuild
+  - leveldown
+  - mongodb-memory-server
+  - sqlite3
+
+useNodeVersion: 22.16.0
